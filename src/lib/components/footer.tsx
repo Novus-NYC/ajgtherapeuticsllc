@@ -44,6 +44,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
+              <a href={site.phone.href} className="inline-block py-1.5 hover:text-signal">
+                {site.phone.label}
+              </a>
+            </li>
+            <li>
               <a href={site.instagram} target="_blank" rel="noreferrer" className="inline-block py-1.5 hover:text-signal">
                 Instagram ↗
               </a>
@@ -81,7 +86,7 @@ export default function Footer() {
       <div className="border-t border-bone/10">
         <div className="container-page flex flex-col gap-3 py-6 text-[0.875rem] text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.name}. NYC DOE Vendor. MWBE certification pending.
+            © {year} {site.name}. NYC DOE Vendor. NYC MBE certified.
           </p>
           <a
             href="https://novusnyc.org"

@@ -10,17 +10,18 @@ export const site = {
   description:
     "Trauma-informed group facilitation, workshops, and trainings for youth, fathers, and violence prevention. Bronx-based, serving schools, CBOs, and justice-involved populations across NYC.",
   email: "info@ajgtherapeuticsllc.com",
+  phone: { label: "(917) 226-1703", href: "tel:+19172261703" },
   instagram: "https://www.instagram.com/ajgtherapeutics/",
   founderLinkedIn: "https://www.linkedin.com/in/alam-gonzalez/",
   capabilityStatement:
     "https://docs.google.com/document/d/12Ypgih-JXKILEQc2cF0aMgyPus4YC8LdPFTiWXVxkcI/edit?usp=share_link",
   area: "Bronx-based. NYC-wide service.",
-  credentials: ["NYC DOE Vendor", "MWBE certification pending", "Bronx-based", "NYC-wide service"],
+  credentials: ["NYC DOE Vendor", "NYC MBE certified", "Bronx-based", "NYC-wide service"],
 } as const
 
 export const procurement = {
   vendorId: "VS00106058",
-  mwbe: "Pending",
+  mbe: "Certified",
   insurance: "Insured and contract-ready. Certificate of Insurance (COI) available.",
   formats: ["Workshops and group cycles", "Assemblies for students", "Staff trainings"],
   cycles: [6, 8, 12],

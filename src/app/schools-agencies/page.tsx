@@ -48,8 +48,8 @@ export default function SchoolsAgenciesPage() {
               <dd className="display mt-3 break-all text-[clamp(2.5rem,5vw,4rem)] leading-none">{procurement.vendorId}</dd>
             </div>
             <div className="border-b border-ink/15 py-8 md:border-b-0 md:border-r md:px-8" data-reveal style={{ "--d": 1 } as React.CSSProperties}>
-              <dt className="font-semibold">MWBE certification</dt>
-              <dd className="display mt-3 text-[clamp(2.5rem,5vw,4rem)] leading-none">{procurement.mwbe}</dd>
+              <dt className="font-semibold">NYC MBE certification</dt>
+              <dd className="display mt-3 text-[clamp(2.5rem,5vw,4rem)] leading-none">{procurement.mbe}</dd>
             </div>
             <div className="py-8 md:pl-8" data-reveal style={{ "--d": 2 } as React.CSSProperties}>
               <dt className="font-semibold">Insurance</dt>

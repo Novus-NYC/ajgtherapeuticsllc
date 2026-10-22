@@ -41,7 +41,7 @@ export default function HomePage() {
             </div>
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t border-bone/15 pt-4 text-[0.875rem] text-bone/75 md:mt-10 md:pt-5" data-reveal style={{ "--d": 4 } as React.CSSProperties}>
               <li>NYC DOE Vendor</li>
-              <li>MWBE certification pending</li>
+              <li>NYC MBE certified</li>
               <li className="max-sm:hidden">Insured and contract-ready</li>
               <li className="max-sm:hidden">Founded by Alam Gonzalez, MSW, CASAC-T</li>
             </ul>
@@ -293,8 +293,8 @@ export default function HomePage() {
               <dd className="display mt-1 text-[2rem] leading-none">{procurement.vendorId}</dd>
             </div>
             <div className="border-t-2 border-ink pt-3" data-reveal style={{ "--d": 1 } as React.CSSProperties}>
-              <dt className="text-[0.9375rem] font-semibold">MWBE certification</dt>
-              <dd className="display mt-1 text-[2rem] leading-none">{procurement.mwbe}</dd>
+              <dt className="text-[0.9375rem] font-semibold">NYC MBE certification</dt>
+              <dd className="display mt-1 text-[2rem] leading-none">{procurement.mbe}</dd>
             </div>
             <div className="border-t-2 border-ink pt-3 sm:col-span-2" data-reveal style={{ "--d": 2 } as React.CSSProperties}>
               <dt className="text-[0.9375rem] font-semibold">Insurance</dt>

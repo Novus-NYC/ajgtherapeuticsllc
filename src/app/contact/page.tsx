@@ -32,6 +32,14 @@ export default function ContactPage() {
               </dd>
             </div>
             <div>
+              <dt className="eyebrow text-muted">Phone</dt>
+              <dd className="mt-1">
+                <a href={site.phone.href} className="text-[1.125rem] font-semibold underline decoration-signal underline-offset-4 hover:text-signal">
+                  {site.phone.label}
+                </a>
+              </dd>
+            </div>
+            <div>
               <dt className="eyebrow text-muted">Instagram</dt>
               <dd className="mt-1">
                 <a href={site.instagram} target="_blank" rel="noreferrer" className="text-[1.125rem] font-semibold underline decoration-signal underline-offset-4 hover:text-signal">

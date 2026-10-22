@@ -21,7 +21,7 @@ Warm ink and bone, with the original brand's signal yellow as the light and acti
 | --- | --- |
 | `/` | Scroll film hero, who we serve, the three pillars, founder, testimonials, recent work, procurement band |
 | `/programs` | Full deliverables for the three pillars, service lines, settings |
-| `/schools-agencies` | Vendor ID, MWBE status, COI, cycle lengths, formats, deliverables, capability statement |
+| `/schools-agencies` | Vendor ID, NYC MBE certification, COI, cycle lengths, formats, deliverables, capability statement |
 | `/about` | Mission, vision, founder credentials, the 2012 CHCF letter, award, upcoming group |
 | `/work` | Dated timeline, field work, Project Beauty, letters, affiliations |
 | `/contact` | Quote form (opens a pre-filled email to info@ajgtherapeuticsllc.com) and ways to support |
@@ -51,6 +51,6 @@ python3 -I scripts/prepare-media.py /tmp/ajg-media public/media
 - The original site had no logo, only default Canva icons. The circle mark and wordmark are new and should be confirmed with the client.
 - The Men's Leadership Group was announced for February 2026 with location and time TBD. The site says exactly that and asks visitors to contact for the schedule. Update it when details are known.
 - A "2017" heading in the source had no recoverable context and was omitted.
-- No phone number or street address appears in the source, so none is shown.
+- The phone number and NYC MBE certification come from the client intake form (2026-10-09); the scrape had said MWBE pending. No street address is given, so none is shown.
 - "Request a quote" has no backend. The form validates, then opens the visitor's email app. Connect a form service if the client wants submissions stored.
 - The capability statement links to the Google Doc from the source. The client should confirm its sharing permissions.
