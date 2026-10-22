@@ -2,11 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  padding: 0;
-  margin: 0;
+@layer base {
+  html {
+    background: #0f0e0c;
+    color: #f3efe9;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    overflow-x: clip;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  ::selection {
+    background: #ffcb37;
+    color: #0f0e0c;
+  }
+  :focus-visible {
+    outline: 2px solid #ffcb37;
+    outline-offset: 3px;
+  }
+  .on-bone :focus-visible {
+    outline-color: #0f0e0c;
+  }
 }
 
-* {
-  box-sizing: border-box;
+@layer components {
+  /* Condensed, heavy display cut of Archivo. */
+  .display {
+    font-family: var(--font-archivo), system-ui, sans-serif;
+    font-stretch: 72%;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    @apply text-eyebrow font-semibold uppercase;
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-page px-gutter;
+  }
+}
+
+/* Scroll reveals. Hidden only once JS has marked the document, so no-JS
+   visitors always see content. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+/* The clip goes on the child: IntersectionObserver honors a target's own
+   clip-path, so a fully clipped target would never intersect. */
+html.js [data-reveal="mask"] {
+  opacity: 1;
+  transform: none;
+}
+html.js [data-reveal="mask"] > * {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+html.js [data-reveal="mask"][data-shown] > * {
+  clip-path: inset(0 0 0 0);
+}
+html.js [data-reveal="line"] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+html.js [data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Procurement cycle ticks fill in sequence. */
+html.js .cycle-tick {
+  transform: scaleY(0.25);
+  opacity: 0.25;
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 400ms ease;
+  transition-delay: calc(var(--i) * 45ms);
+  transform-origin: bottom;
+}
+html.js [data-shown] .cycle-tick {
+  transform: none;
+  opacity: 1;
+}
+
+/* Scroll film: by default (no JS, reduced motion, or no WebGL) every chapter
+   is its own panel with a static glow that warms through the story. */
+.film-panel,
+.film-glow {
+  background: radial-gradient(55% 60% at 72% 45%, var(--glow, rgba(255, 203, 55, 0.12)), transparent 70%), #0f0e0c;
+}
+@media (max-aspect-ratio: 1/1) {
+  .film-panel,
+  .film-glow {
+    background: radial-gradient(80% 45% at 50% 28%, var(--glow, rgba(255, 203, 55, 0.12)), transparent 70%), #0f0e0c;
+  }
+}
+.film-stage {
+  display: none;
+}
+.film-on .film-stage {
+  display: block;
+}
+.film-on .film-panel {
+  background: none;
+}
+
+/* Chapter word swap, driven by --cp (0..1) set per panel while the film plays. */
+.swap-from {
+  position: relative;
+  color: rgba(243, 239, 233, 0.55);
+}
+.swap-from::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  top: 52%;
+  height: 0.07em;
+  background: #ffcb37;
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.film-on .swap-from::after {
+  transform: scaleX(clamp(0, calc((var(--cp, 1) - 0.18) * 3.2), 1));
+}
+.film-on .swap-to {
+  opacity: clamp(0, calc((var(--cp, 1) - 0.32) * 3.4), 1);
+  transform: translate3d(0, calc((1 - clamp(0, calc((var(--cp, 1) - 0.32) * 3.4), 1)) * 0.35em), 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.js [data-reveal],
+  html.js [data-reveal="mask"] > *,
+  html.js .cycle-tick {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
