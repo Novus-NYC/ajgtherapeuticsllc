@@ -81,10 +81,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/contact#quote"
+            href="/book"
             className="hidden min-h-[44px] items-center bg-signal px-5 text-[0.9375rem] font-semibold text-ink transition-colors hover:bg-bone sm:inline-flex"
           >
-            Request a quote
+            Book a consultation
           </Link>
           <button
             ref={toggleRef}
@@ -140,10 +140,10 @@ export default function Navbar() {
           </ul>
           <div className="container-page mt-auto pb-10">
             <Link
-              href="/contact#quote"
+              href="/book"
               className="flex min-h-[52px] items-center justify-center bg-signal font-semibold text-ink"
             >
-              Request a quote
+              Book a consultation
             </Link>
             <a href={`mailto:${site.email}`} className="mt-4 block text-center text-muted underline">
               {site.email}

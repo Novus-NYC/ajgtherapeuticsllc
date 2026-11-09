@@ -16,7 +16,7 @@ export default function HomePage() {
         hero={
           <div className="container-page pb-6 pt-24 md:pb-14 md:pt-32">
             <p className="eyebrow text-signal" data-reveal>
-              {site.area}
+              {site.motto} · {site.area}
             </p>
             <h1 className="display mt-5 text-h1" data-reveal style={{ "--d": 1 } as React.CSSProperties}>
               Men<span className="text-signal">.</span> Fathers<span className="text-signal">.</span>
@@ -33,9 +33,9 @@ export default function HomePage() {
                 </span>
               </p>
               <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end" data-reveal style={{ "--d": 3 } as React.CSSProperties}>
-                <ButtonLink href="/contact#quote">Request a quote</ButtonLink>
-                <ButtonLink href={site.capabilityStatement} variant="ghost" external>
-                  Capability statement
+                <ButtonLink href="/book">Schedule a consultation</ButtonLink>
+                <ButtonLink href="/schools-agencies" variant="ghost">
+                  Partner with us
                 </ButtonLink>
               </div>
             </div>
@@ -74,6 +74,10 @@ export default function HomePage() {
               <p className="mt-8 max-w-[46rem] text-bone/75" data-reveal style={{ "--d": 3 } as React.CSSProperties}>
                 These are central to everything we do, from school workshops to fatherhood circles to the partnerships
                 we build with agencies across New York City.
+              </p>
+              <p className="mt-12 border-l-2 border-signal pl-6 font-serif text-[clamp(1.75rem,3vw,2.5rem)] italic leading-tight" data-reveal>
+                <span className="eyebrow mb-2 block not-italic text-signal">Our guiding motto</span>
+                {site.motto}.
               </p>
             </div>
           </div>
@@ -183,6 +187,9 @@ export default function HomePage() {
                 {founder.credentials}
               </span>
             </h2>
+            <p className="mt-6 text-bone/85" data-reveal>
+              {founder.story[0]}
+            </p>
             <ul className="mt-8 grid gap-x-6 gap-y-2 text-bone/90 sm:grid-cols-2" data-reveal>
               {founder.bio.slice(0, 4).map((b) => (
                 <li key={b} className="flex gap-3">
@@ -311,8 +318,11 @@ export default function HomePage() {
                 href="/schools-agencies"
                 className="inline-flex min-h-[48px] items-center gap-3 bg-ink px-6 font-semibold text-bone transition-colors hover:bg-ink-3"
               >
-                Procurement details <span aria-hidden>→</span>
+                Institutional partners <span aria-hidden>→</span>
               </Link>
+              <ButtonLink href="/book" variant="ghost-dark">
+                Book a partnership call
+              </ButtonLink>
               <ButtonLink href={site.capabilityStatement} variant="ghost-dark" external>
                 Capability statement
               </ButtonLink>

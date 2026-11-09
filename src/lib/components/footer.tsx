@@ -9,8 +9,8 @@ export default function Footer() {
       <div className="container-page grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
           <Wordmark />
-          <p className="display mt-8 max-w-md text-[clamp(2rem,4vw,3.25rem)] leading-[0.92]">
-            Join the movement. <span className="text-signal">Support Bronx men.</span>
+          <p className="mt-8 font-serif text-[clamp(2rem,4vw,3.25rem)] italic leading-[1]">
+            {site.motto}<span className="text-signal">.</span>
           </p>
           <p className="mt-6 max-w-sm text-muted">
             Trauma-informed programs for youth, fathers, and violence prevention. {site.area}
@@ -75,10 +75,10 @@ export default function Footer() {
             </li>
           </ul>
           <Link
-            href="/contact#quote"
+            href="/book"
             className="mt-8 inline-flex min-h-[48px] items-center gap-3 bg-signal px-5 font-semibold text-ink transition-colors hover:bg-bone"
           >
-            Request a quote <span aria-hidden>→</span>
+            Book a consultation <span aria-hidden>→</span>
           </Link>
         </div>
       </div>

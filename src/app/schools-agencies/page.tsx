@@ -3,7 +3,7 @@ import Image from "next/image"
 import PageHero from "@/lib/components/page-hero"
 import ClosingCta from "@/lib/components/closing-cta"
 import { ButtonLink } from "@/lib/components/button"
-import { pillars, procurement, site } from "@/lib/site"
+import { contractingSteps, institutionalClients, pillars, procurement, programAreas, site } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "For Schools and Agencies",
@@ -14,7 +14,7 @@ export default function SchoolsAgenciesPage() {
   return (
     <>
       <PageHero
-        eyebrow="For schools and agencies"
+        eyebrow="For institutional clients"
         title={
           <>
             Procurement<span className="text-signal">,</span> made plain<span className="text-signal">.</span>
@@ -22,13 +22,17 @@ export default function SchoolsAgenciesPage() {
         }
         intro={
           <p>
-            Everything a school, CBO, or agency needs to bring AJG Therapeutics in: vendor status, formats, cycle
-            lengths, and the documentation delivered with every program.
+            AJG Therapeutics LLC is a certified Minority Business Enterprise (MBE) and an approved NYC Department of
+            Education vendor. Here is everything a school, agency, or institution needs to bring us in: certifications,
+            program areas, formats, and how contracting works.
           </p>
         }
         aside={
           <div className="flex flex-col gap-3">
-            <ButtonLink href="/contact#quote">Request a quote</ButtonLink>
+            <ButtonLink href="/book">Book a partnership call</ButtonLink>
+            <ButtonLink href="/contact#quote" variant="ghost">
+              Send a contracting inquiry
+            </ButtonLink>
             <ButtonLink href={site.capabilityStatement} variant="ghost" external>
               Download capability statement
             </ButtonLink>
@@ -58,6 +62,39 @@ export default function SchoolsAgenciesPage() {
               </dd>
             </div>
           </dl>
+        </div>
+      </section>
+
+      {/* Who we partner with + program areas */}
+      <section className="bg-ink" aria-labelledby="partners">
+        <div className="container-page grid gap-14 py-24 md:grid-cols-12 md:py-32">
+          <div className="md:col-span-7">
+            <h2 id="partners" className="display text-h2" data-reveal>
+              Who we <span className="text-signal">partner with.</span>
+            </h2>
+            <ul className="mt-10 border-t border-bone/15">
+              {institutionalClients.map((c, i) => (
+                <li key={c.title} className="border-b border-bone/15 py-5" data-reveal style={{ "--d": i } as React.CSSProperties}>
+                  <span className="block text-[1.25rem] font-semibold">{c.title}</span>
+                  <span className="mt-1 block text-muted">{c.detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-4 md:col-start-9">
+            <h2 className="eyebrow text-signal">Program areas</h2>
+            <ul className="mt-6 space-y-3">
+              {programAreas.map((a) => (
+                <li key={a} className="flex items-center gap-3 border-b border-bone/15 pb-3 text-[1.125rem] font-semibold">
+                  <span aria-hidden className="h-px w-4 bg-signal" />
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <ButtonLink href="/programs" variant="text" className="mt-6">
+              Program details
+            </ButtonLink>
+          </div>
         </div>
       </section>
 
@@ -134,6 +171,29 @@ export default function SchoolsAgenciesPage() {
             </ul>
             <p className="mt-6 text-muted">Available for {procurement.availableFor}.</p>
           </div>
+        </div>
+      </section>
+
+      {/* Contracting process */}
+      <section id="contracting" className="scroll-mt-20 bg-ink" aria-labelledby="process">
+        <div className="container-page py-24 md:py-28">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <h2 id="process" className="display text-h2" data-reveal>
+              How contracting <span className="text-signal">works.</span>
+            </h2>
+            <ButtonLink href="/book" className="self-start md:self-auto">
+              Book a partnership call
+            </ButtonLink>
+          </div>
+          <ol className="mt-12 grid gap-px bg-bone/15 md:grid-cols-4">
+            {contractingSteps.map((step, i) => (
+              <li key={step.title} className="bg-ink py-8 md:px-6" data-reveal style={{ "--d": i } as React.CSSProperties}>
+                <span className="display text-[3rem] leading-none text-signal">{i + 1}</span>
+                <h3 className="mt-4 text-[1.25rem] font-semibold">{step.title}</h3>
+                <p className="mt-2 text-muted">{step.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

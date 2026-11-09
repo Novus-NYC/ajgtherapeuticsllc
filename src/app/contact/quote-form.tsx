@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { pillars, procurement, site } from "@/lib/site"
+import { inquiryTypes, procurement, programAreas, site } from "@/lib/site"
 
 type Field = "name" | "email" | "message"
 type Errors = Partial<Record<Field, string>>
@@ -29,13 +29,15 @@ export default function QuoteForm() {
       e.currentTarget.querySelector<HTMLElement>(`[name="${first}"]`)?.focus()
       return
     }
-    const subject = `Quote request: ${v("program") || "Programs"}${v("org") ? ` for ${v("org")}` : ""}`
+    const subject = `${v("inquiry") || "Inquiry"}${v("program") ? `: ${v("program")}` : ""}${v("org") ? ` for ${v("org")}` : ""}`
     const body = [
       `Name: ${v("name")}`,
       `Organization: ${v("org") || "Not given"}`,
       `Email: ${v("email")}`,
       `Phone: ${v("phone") || "Not given"}`,
-      `Program: ${v("program") || "Not sure yet"}`,
+      `Inquiry: ${v("inquiry")}`,
+      `Organization type: ${v("orgType") || "Not given"}`,
+      `Service of interest: ${v("program") || "Not sure yet"}`,
       `Format: ${v("format") || "Not sure yet"}`,
       "",
       v("message"),
@@ -80,16 +82,42 @@ export default function QuoteForm() {
         <input id="phone" name="phone" type="tel" autoComplete="tel" className={inputCls} />
       </div>
       <div>
+        <label htmlFor="inquiry" className="font-semibold">
+          How can we help?
+        </label>
+        <select id="inquiry" name="inquiry" className={inputCls} defaultValue={inquiryTypes[1]}>
+          {inquiryTypes.map((t) => (
+            <option key={t}>{t}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="orgType" className="font-semibold">
+          Organization type
+        </label>
+        <select id="orgType" name="orgType" className={inputCls} defaultValue="">
+          <option value="">Choose one</option>
+          <option>DOE school or charter school</option>
+          <option>ACS facility or youth program</option>
+          <option>Correctional, jail, or reentry organization</option>
+          <option>Community-based organization or nonprofit</option>
+          <option>Government agency</option>
+          <option>Individual</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
         <label htmlFor="program" className="font-semibold">
-          Program
+          Service of interest
         </label>
         <select id="program" name="program" className={inputCls} defaultValue="">
           <option value="">Not sure yet</option>
-          {pillars.map((p) => (
-            <option key={p.id}>{p.title}</option>
+          {programAreas.map((a) => (
+            <option key={a}>{a}</option>
           ))}
-          <option>Fatherhood and family support</option>
+          <option>Therapeutic group facilitation</option>
           <option>Harm reduction and reentry stabilization</option>
+          <option>Speaking engagement</option>
         </select>
       </div>
       <div>

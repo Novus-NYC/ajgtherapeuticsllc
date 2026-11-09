@@ -3,7 +3,9 @@ import Image from "next/image"
 import PageHero from "@/lib/components/page-hero"
 import ClosingCta from "@/lib/components/closing-cta"
 import { ButtonLink } from "@/lib/components/button"
-import { approach, founder, mission, site, upcoming, vision } from "@/lib/site"
+import { approach, founder, mission, pastWork, site, upcoming, vision } from "@/lib/site"
+
+const founderPhotos = ["Career Day", "Let’s Talk Peace Summit", "NBCUniversal"].map((t) => pastWork.find((w) => w.title === t)!.image!)
 
 export const metadata: Metadata = {
   title: "About",
@@ -53,6 +55,20 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Motto */}
+      <section className="bg-ink-2 text-center" aria-label="Our guiding motto">
+        <div className="container-page py-20 md:py-24">
+          <p className="eyebrow text-signal">Our guiding motto</p>
+          <p className="mt-5 font-serif text-[clamp(2.5rem,6vw,5rem)] italic leading-[1]" data-reveal>
+            {site.motto}<span className="text-signal">.</span>
+          </p>
+          <p className="mx-auto mt-6 max-w-[40rem] text-bone/80" data-reveal>
+            Who you are matters more than what you are praised for. Every circle, workshop, and partnership starts with
+            accountability, integrity, and showing up for the people who depend on you.
+          </p>
+        </div>
+      </section>
+
       {/* Founder */}
       <section id="founder" className="bg-ink" aria-labelledby="founder-name">
         <div className="container-page grid gap-12 py-24 md:grid-cols-12 md:py-32">
@@ -73,8 +89,26 @@ export default function AboutPage() {
             <h2 id="founder-name" className="display mt-4 text-h2" data-reveal>
               {founder.name}
             </h2>
-            <p className="mt-3 text-lead text-muted">{founder.credentials}</p>
-            <ul className="mt-10 border-t border-bone/15">
+            <p className="mt-3 text-lead text-muted">
+              {founder.credentials} · {founder.titles}
+            </p>
+            <div className="mt-8 space-y-5 text-[1.125rem] leading-relaxed text-bone/90">
+              {founder.story.map((p, i) => (
+                <p key={i} data-reveal style={{ "--d": i } as React.CSSProperties}>
+                  {p}
+                </p>
+              ))}
+            </div>
+            <h3 className="eyebrow mt-12 text-signal">Areas of practice</h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {founder.practice.map((p) => (
+                <li key={p} className="border border-bone/25 px-3 py-1.5 text-[0.9375rem]">
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <h3 className="eyebrow mt-12 text-signal">Credentials, community involvement, and accomplishments</h3>
+            <ul className="mt-4 border-t border-bone/15">
               {founder.bio.map((b, i) => (
                 <li
                   key={b}
@@ -84,6 +118,13 @@ export default function AboutPage() {
                 >
                   <span aria-hidden className="mt-[0.75em] h-px w-4 shrink-0 bg-signal" />
                   {b}
+                </li>
+              ))}
+            </ul>
+            <ul className="mt-10 grid grid-cols-3 gap-3" aria-label="Alam in the community">
+              {founderPhotos.map((ph) => (
+                <li key={ph.src}>
+                  <Image src={ph.src} alt={ph.alt} width={ph.w} height={ph.h} sizes="(min-width: 768px) 15vw, 33vw" className="aspect-square w-full object-cover" />
                 </li>
               ))}
             </ul>

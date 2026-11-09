@@ -5,7 +5,7 @@ import { seeking, site, upcoming } from "@/lib/site"
 import QuoteForm from "./quote-form"
 
 export const metadata: Metadata = {
-  title: "Contact and Request a Quote",
+  title: "Contact",
   description:
     "Request a quote for workshops, group cycles, assemblies, or staff trainings, or support the work with funding, space, referrals, and mentorship.",
 }
@@ -59,15 +59,20 @@ export default function ContactPage() {
         <div className="container-page grid gap-12 py-20 md:grid-cols-12 md:py-28">
           <div className="md:col-span-4">
             <h2 id="quote-title" className="display text-h2">
-              Request a quote<span className="text-clay">.</span>
+              Get in touch<span className="text-clay">.</span>
             </h2>
             <p className="mt-6 text-stone">
-              Workshops, 6 to 12-week group cycles, student assemblies, and staff trainings. Programs come with sign-in
-              sheets, pre/post surveys, summary reports, and participation certificates.
+              Request a workshop, explore a partnership or contract, ask about a speaking engagement, or just say hello.
+              Tell us what you’re interested in and we’ll route it to the right conversation.
             </p>
-            <ButtonLink href={site.capabilityStatement} variant="ghost-dark" external className="mt-8">
-              Capability statement
-            </ButtonLink>
+            <div className="mt-8 flex flex-col items-start gap-3">
+              <ButtonLink href="/book" variant="ghost-dark">
+                Book a consultation instead
+              </ButtonLink>
+              <ButtonLink href={site.capabilityStatement} variant="ghost-dark" external>
+                Capability statement
+              </ButtonLink>
+            </div>
           </div>
           <div className="md:col-span-7 md:col-start-6">
             <QuoteForm />

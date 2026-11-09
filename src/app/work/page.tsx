@@ -3,7 +3,8 @@ import Image from "next/image"
 import PageHero from "@/lib/components/page-hero"
 import ClosingCta from "@/lib/components/closing-cta"
 import { ButtonLink } from "@/lib/components/button"
-import { logos, pastWork, projectBeauty } from "@/lib/site"
+import { logos, projectBeauty, stats, testimonials } from "@/lib/site"
+import Gallery from "./gallery"
 
 export const metadata: Metadata = {
   title: "Our Work",
@@ -12,8 +13,6 @@ export const metadata: Metadata = {
 }
 
 export default function WorkPage() {
-  const dated = pastWork.filter((w) => w.date)
-  const field = pastWork.filter((w) => !w.date)
 
   return (
     <>
@@ -26,84 +25,45 @@ export default function WorkPage() {
         }
         intro={
           <p>
-            Summits, classrooms, graduation stages, group rooms, and television studios. A record of where the work has
-            happened.
+            Summits, classrooms, graduation stages, group rooms, and television studios. Awards, media, speaking,
+            programs, and collaborations: the evidence of the work, not just a description of it.
           </p>
         }
       />
 
-      {/* Timeline */}
-      <section className="bg-ink" aria-label="Timeline">
-        <ol className="container-page relative pb-24 md:pb-32">
-          <span aria-hidden className="absolute bottom-24 left-gutter top-0 w-px bg-bone/15 md:left-1/2" />
-          {dated.map((w, i) => {
-            const right = i % 2 === 1
-            return (
-              <li key={w.title} className="relative grid gap-6 py-12 pl-8 md:grid-cols-2 md:gap-16 md:pl-0">
-                <span
-                  aria-hidden
-                  className="absolute left-[-5px] top-[3.6rem] h-[11px] w-[11px] rounded-full bg-signal md:left-[calc(50%-5px)]"
-                />
-                <div className={right ? "md:order-2 md:pl-4" : "md:pr-4 md:text-right"}>
-                  <p className="eyebrow text-signal" data-reveal>
-                    {w.date}
-                  </p>
-                  <h2 className="display mt-3 text-[clamp(2rem,3.8vw,3.25rem)] leading-[0.92]" data-reveal>
-                    {w.title}
-                  </h2>
-                  <p className={`mt-4 max-w-md text-bone/85 ${right ? "" : "md:ml-auto"}`} data-reveal>
-                    {w.detail}
-                  </p>
-                  {w.link && (
-                    <ButtonLink href={w.link.href} variant="text" external className="mt-3">
-                      {w.link.label}
-                    </ButtonLink>
-                  )}
-                </div>
-                {w.image && (
-                  <div className={right ? "md:order-1 md:pr-4" : "md:pl-4"} data-reveal="mask">
-                    <Image
-                      src={w.image.src}
-                      alt={w.image.alt}
-                      width={w.image.w}
-                      height={w.image.h}
-                      sizes="(min-width: 768px) 40vw, 100vw"
-                      className={`w-full object-cover ${w.image.h > w.image.w ? "aspect-[4/5] md:max-w-md" : "aspect-[3/2]"} ${right ? "md:ml-auto" : ""}`}
-                    />
-                  </div>
-                )}
-              </li>
-            )
-          })}
-        </ol>
+      {/* Portfolio gallery */}
+      <section className="bg-ink" aria-labelledby="portfolio">
+        <div className="container-page pb-24 md:pb-32">
+          <h2 id="portfolio" className="sr-only">
+            Portfolio
+          </h2>
+          <Gallery />
+        </div>
       </section>
 
-      {/* Field work */}
-      <section className="on-bone bg-bone text-ink" aria-labelledby="field">
+      {/* Impact */}
+      <section className="on-bone bg-bone text-ink" aria-labelledby="impact">
         <div className="container-page py-24 md:py-28">
-          <h2 id="field" className="display text-h2" data-reveal>
-            More from the field<span className="text-clay">.</span>
+          <h2 id="impact" className="eyebrow text-clay">
+            Program impact
           </h2>
-          <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {field.map((w, i) => (
-              <li key={w.title} data-reveal style={{ "--d": i } as React.CSSProperties}>
-                {w.image && (
-                  <div className="overflow-hidden bg-bone-2">
-                    <Image
-                      src={w.image.src}
-                      alt={w.image.alt}
-                      width={w.image.w}
-                      height={w.image.h}
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      className="aspect-square w-full object-cover object-[50%_15%]"
-                    />
-                  </div>
-                )}
-                <h3 className="mt-5 text-h3 font-semibold">{w.title}</h3>
-                <p className="mt-2 text-stone">{w.detail}</p>
-              </li>
+          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
+            {stats.map((s, i) => (
+              <div key={s.label} className="border-t-2 border-ink pt-4" data-reveal style={{ "--d": i } as React.CSSProperties}>
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="display text-[clamp(2.25rem,5vw,4rem)] leading-none">{s.value}</dd>
+                <dd className="mt-2 text-[0.9375rem] text-stone">{s.label}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
+          <div className="mt-16 grid gap-12 md:grid-cols-2">
+            {testimonials.map((t) => (
+              <figure key={t.name} data-reveal>
+                <blockquote className="font-serif text-[1.5rem] leading-snug">“{t.quote}”</blockquote>
+                <figcaption className="mt-4 font-semibold">{t.name}, program participant</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 

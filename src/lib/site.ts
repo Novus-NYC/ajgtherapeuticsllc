@@ -7,6 +7,7 @@ export const site = {
   shortName: "AJG Therapeutics",
   url: "https://ajgtherapeuticsllc.com",
   tagline: "Men. Fathers. Healing. Change.",
+  motto: "Character Before Recognition",
   description:
     "Trauma-informed group facilitation, workshops, and trainings for youth, fathers, and violence prevention. Bronx-based, serving schools, CBOs, and justice-involved populations across NYC.",
   email: "info@ajgtherapeuticsllc.com",
@@ -16,6 +17,9 @@ export const site = {
   capabilityStatement:
     "https://docs.google.com/document/d/12Ypgih-JXKILEQc2cF0aMgyPus4YC8LdPFTiWXVxkcI/edit?usp=share_link",
   area: "Bronx-based. NYC-wide service.",
+  // Online booking (Calendly recommended). Paste Alam's scheduling link here once his
+  // account is connected to his calendar; until then /book shows a request form.
+  bookingUrl: "",
   credentials: ["NYC DOE Vendor", "NYC MBE certified", "Bronx-based", "NYC-wide service"],
 } as const
 
@@ -34,7 +38,49 @@ export const nav = [
   { href: "/schools-agencies", label: "Schools & Agencies" },
   { href: "/about", label: "About" },
   { href: "/work", label: "Our Work" },
+  { href: "/book", label: "Book" },
   { href: "/contact", label: "Contact" },
+] as const
+
+// From Alam Gonzalez's feedback (Oct 24, 2026).
+export const institutionalClients = [
+  { title: "NYC DOE schools and charter schools", detail: "Workshops, assemblies, SEL sessions, and family engagement." },
+  { title: "ACS facilities and youth-serving programs", detail: "Group cycles and staff trainings for high-risk youth settings." },
+  { title: "Correctional institutions, jails, and reentry organizations", detail: "Men’s groups, reentry stabilization, and relapse prevention." },
+  { title: "Community-based organizations and nonprofits", detail: "Healing circles, fatherhood programming, and community events." },
+  { title: "Government agencies and institutional partners", detail: "Contracted programming with documentation and reporting." },
+] as const
+
+export const programAreas = [
+  "Violence prevention",
+  "Fatherhood and men’s empowerment",
+  "Youth leadership",
+  "Emotional regulation",
+  "Conflict resolution",
+  "Professional development",
+] as const
+
+export const contractingSteps = [
+  { title: "Send an inquiry", body: "Use the contact form or book a partnership call. Tell us your site, population, and goals." },
+  { title: "Planning meeting", body: "We scope the program area, format, cycle length, and schedule with your team." },
+  { title: "Proposal and paperwork", body: "You receive a proposal with our capability statement, DOE vendor ID, MBE certification, and Certificate of Insurance." },
+  { title: "Delivery and reporting", body: "Sessions are delivered with sign-in sheets, pre/post surveys, summary reports, and participation certificates." },
+] as const
+
+export const meetingTypes = [
+  { id: "consultation", title: "Initial consultation or discovery call", length: "30 minutes", body: "A first conversation about your needs and whether AJG is the right fit." },
+  { id: "planning", title: "Program and workshop planning meeting", length: "45 minutes", body: "Scope a workshop, group cycle, assembly, or training with your team." },
+  { id: "speaking", title: "Speaking engagement inquiry", length: "30 minutes", body: "Keynotes, commencement addresses, summits, panels, and media." },
+  { id: "partnership", title: "School and agency partnership discussion", length: "45 minutes", body: "Contracts, procurement, and long-term partnerships with institutions." },
+] as const
+
+export const inquiryTypes = [
+  "Schedule a consultation",
+  "Request a workshop or program",
+  "Explore a partnership or contract",
+  "Speaking engagement",
+  "Support the work",
+  "General question",
 ] as const
 
 export type Pillar = {
@@ -152,6 +198,22 @@ export const founder = {
   name: "Alam Gonzalez",
   credentials: "MSW, CASAC-T",
   role: "Founder",
+  titles: "Social Worker · Public Speaker · Consultant",
+  // Story drafted from Alam's Oct 24, 2026 feedback; pending his review and fuller biography.
+  story: [
+    "Alam Gonzalez’s work grows out of the same communities he serves. His lived experiences shaped a lifelong commitment to men, fathers, and young people in communities that have historically faced significant barriers to opportunity.",
+    "That commitment became a profession. As a Bronx-based ATI social worker, violence prevention specialist, and group facilitator, Alam has worked in community settings, inside Rikers, and in agency programs, serving more than 250 justice-impacted youth, adults, and fathers.",
+    "He founded AJG Therapeutics to bring that work to more schools, agencies, and neighborhoods, guided by one principle: character before recognition.",
+  ],
+  practice: [
+    "Social work",
+    "Violence prevention",
+    "Youth mentorship",
+    "Fatherhood advocacy",
+    "Community organizing",
+    "Public speaking",
+    "Leadership development",
+  ],
   bio: [
     "Bronx-based ATI social worker",
     "Violence prevention specialist",
@@ -187,7 +249,11 @@ export const purpose = {
 export const approach =
   "AJG Therapeutics LLC operates through culturally grounded, trauma-informed practices delivered by trained facilitators with lived experience. We provide school- and community-based programming aligned with Social-Emotional Learning (SEL), restorative practices, and youth development frameworks to support positive school culture and community safety."
 
+export const workCategories = ["Awards and recognition", "Media", "Speaking", "Programs and workshops", "Collaborations"] as const
+export type WorkCategory = (typeof workCategories)[number]
+
 export type WorkItem = {
+  category: WorkCategory
   date?: string
   title: string
   detail: string
@@ -197,6 +263,7 @@ export type WorkItem = {
 
 export const pastWork: WorkItem[] = [
   {
+    category: "Awards and recognition",
     date: "November 2025",
     title: "25th Anniversary Leadership Awards",
     detail:
@@ -209,6 +276,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Programs and workshops",
     date: "May 2025",
     title: "Youth Leadership Summit",
     detail:
@@ -221,6 +289,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Media",
     date: "July 2024",
     title: "Telemundo: El Show de Jackie",
     detail: "Featured guest on El Show de Jackie, Telemundo 47.",
@@ -233,6 +302,7 @@ export const pastWork: WorkItem[] = [
     link: { href: "https://www.instagram.com/reels/C8ecFiKu9Pj/", label: "Watch the segment" },
   },
   {
+    category: "Speaking",
     date: "June 2024",
     title: "Commencement speaker",
     detail: "Spoke at the graduation of HSE High School for Excellence and Innovation.",
@@ -244,6 +314,19 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Awards and recognition",
+    date: "June 2024",
+    title: "Graduation Speaker award",
+    detail: "Honored as the Class of 2024 graduation speaker by the High School for Excellence and Innovation.",
+    image: {
+      src: "/media/award-crystal.jpg",
+      alt: "Alam Gonzalez holding a glass award engraved Graduation Speaker 2024, over the HSEI commencement program",
+      w: 900,
+      h: 1200,
+    },
+  },
+  {
+    category: "Speaking",
     date: "February 2024",
     title: "Career Day",
     detail: "Spoke with youth about his work as an ATI social worker and in the community.",
@@ -255,6 +338,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Programs and workshops",
     date: "March 2023",
     title: "Let’s Talk Peace Summit",
     detail: "Led a peace outreach campaign on gun violence issues in the Dyckman community.",
@@ -266,6 +350,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Programs and workshops",
     title: "Group facilitation",
     detail: "Substance abuse group on addressing emotional relapse.",
     image: {
@@ -276,6 +361,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Collaborations",
     title: "Girls leadership and family empowerment",
     detail: "Collaboration with the Project Beauty girls program at Dyckman Houses.",
     image: {
@@ -286,6 +372,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Speaking",
     title: "NBCUniversal",
     detail: "Stakeholder fundraising event.",
     image: {
@@ -296,6 +383,7 @@ export const pastWork: WorkItem[] = [
     },
   },
   {
+    category: "Programs and workshops",
     title: "Bronx Leadership Academy",
     detail: "Male empowerment talk.",
     image: {
