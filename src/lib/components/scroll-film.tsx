@@ -20,7 +20,7 @@ const PEAK = 0.62
 
 // Fallback panel glow, warming chapter by chapter like the film does.
 const glow = (i: number) =>
-  ({ "--glow": ["rgba(143,153,168,0.16)", "rgba(230,214,184,0.16)", "rgba(250,199,128,0.17)", "rgba(255,189,92,0.18)", "rgba(255,201,71,0.2)", "rgba(255,203,55,0.22)"][i] }) as React.CSSProperties
+  ({ "--glow": ["rgba(143,153,168,0.16)", "rgba(230,214,184,0.16)", "rgba(214,196,150,0.17)", "rgba(190,160,100,0.18)", "rgba(201,164,92,0.2)", "rgba(201,164,92,0.22)"][i] }) as React.CSSProperties
 
 export default function ScrollFilm({ hero }: { hero: React.ReactNode }) {
   const sectionRef = useRef<HTMLElement>(null)
@@ -119,7 +119,7 @@ export default function ScrollFilm({ hero }: { hero: React.ReactNode }) {
       <div className="film-stage sticky top-0 h-[100svh] overflow-hidden" aria-hidden>
         <div className="film-glow absolute inset-0" />
         <canvas ref={canvasRef} className="film-canvas absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,14,12,0.86)_0%,rgba(15,14,12,0.45)_42%,rgba(15,14,12,0)_70%)] max-md:bg-[linear-gradient(0deg,rgba(15,14,12,0.92)_0%,rgba(15,14,12,0.55)_40%,rgba(15,14,12,0.1)_70%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,50,36,0.86)_0%,rgba(8,50,36,0.45)_42%,rgba(8,50,36,0)_70%)] max-md:bg-[linear-gradient(0deg,rgba(8,50,36,0.92)_0%,rgba(8,50,36,0.55)_40%,rgba(8,50,36,0.1)_70%)]" />
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/70 to-transparent" />
 
         {/* Chapter rail */}
@@ -183,7 +183,7 @@ export default function ScrollFilm({ hero }: { hero: React.ReactNode }) {
         ${film.chapters
           .map(
             (_, i) =>
-              `.film[data-active="${i}"] [data-rail="${i}"]{color:#FFCB37}.film[data-active="${i}"] [data-rail="${i}"] .film-rail-dot{width:2.5rem;background:#FFCB37}`,
+              `.film[data-active="${i}"] [data-rail="${i}"]{color:#C9A45C}.film[data-active="${i}"] [data-rail="${i}"] .film-rail-dot{width:2.5rem;background:#C9A45C}`,
           )
           .join("")}
         @media (max-width: 767px) {

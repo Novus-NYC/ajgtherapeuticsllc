@@ -9,7 +9,7 @@ export default function ClosingCta({ title }: Props) {
     <section className="relative overflow-hidden bg-ink">
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-[70%] w-[min(70rem,140vw)] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(255,203,55,0.22),transparent_65%)]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[70%] w-[min(70rem,140vw)] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(201,164,92,0.22),transparent_65%)]"
       />
       <div className="container-page relative py-28 text-center md:py-36">
         <h2 className="display mx-auto max-w-5xl text-h2" data-reveal>

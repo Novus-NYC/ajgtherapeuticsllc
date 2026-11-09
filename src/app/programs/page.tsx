@@ -81,7 +81,7 @@ export default function ProgramsPage() {
                 <div className="md:sticky md:top-28">
                   <p
                     className={`display text-[6rem] leading-[0.8] text-transparent md:text-[9rem] ${
-                      light ? "[-webkit-text-stroke:1.5px_#0F0E0C]" : "[-webkit-text-stroke:1.5px_#FFCB37]"
+                      light ? "[-webkit-text-stroke:1.5px_#083224]" : "[-webkit-text-stroke:1.5px_#C9A45C]"
                     }`}
                     aria-hidden
                   >

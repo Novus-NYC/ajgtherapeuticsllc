@@ -1,17 +1,17 @@
 import type { Config } from "tailwindcss"
 
-// Palette: "into the light". Warm ink and bone carry the site, signal yellow
-// (from the original brand) is the action and light color, clay marks states
+// Palette: AJG signature green (#083224, from ajgtherapeuticsllc.com) carries the site,
+// warm bone neutrals, and a subtle bronze-gold accent for actions; clay marks states
 // and small accents.
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#0F0E0C", 2: "#191713", 3: "#25221D" },
+        ink: { DEFAULT: "#083224", 2: "#0C3B2B", 3: "#1B4235" },
         bone: { DEFAULT: "#F3EFE9", 2: "#E6DFD3" },
-        signal: { DEFAULT: "#FFCB37", deep: "#E8AE12" },
-        clay: "#A84A24",
+        signal: { DEFAULT: "#C9A45C", deep: "#B08A44" },
+        clay: "#8A6A35",
         muted: "#ABA498",
         stone: "#5A544B",
       },

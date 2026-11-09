@@ -3,7 +3,7 @@ import Link from "next/link"
 import ScrollFilm from "@/lib/components/scroll-film"
 import { ButtonLink } from "@/lib/components/button"
 import ClosingCta from "@/lib/components/closing-cta"
-import { audiences, founder, logos, pastWork, pillars, procurement, site, stats, testimonials } from "@/lib/site"
+import { audiences, founder, logos, pastWork, pillars, procurement, purpose, site, stats, testimonials } from "@/lib/site"
 
 const featured = ["25th Anniversary Leadership Awards", "Let’s Talk Peace Summit", "Telemundo: El Show de Jackie"]
 
@@ -48,6 +48,37 @@ export default function HomePage() {
           </div>
         }
       />
+
+      {/* Mission and vision: why this work matters */}
+      <section className="bg-ink-2 text-bone">
+        <div className="container-page py-24 md:py-32">
+          <div className="grid gap-10 md:grid-cols-12">
+            <p className="eyebrow text-signal md:col-span-3" data-reveal>
+              Why this work matters
+            </p>
+            <div className="md:col-span-9">
+              <h2 className="font-serif text-[clamp(2rem,4.2vw,3.75rem)] leading-[1.05]" data-reveal>
+                {purpose.lead}
+              </h2>
+              <p className="mt-8 max-w-[46rem] text-lead text-bone/85" data-reveal style={{ "--d": 1 } as React.CSSProperties}>
+                {purpose.body}
+              </p>
+              <ul className="mt-12 grid gap-px overflow-hidden rounded-sm bg-bone/15 sm:grid-cols-2 lg:grid-cols-5" data-reveal style={{ "--d": 2 } as React.CSSProperties}>
+                {purpose.pillars.map((p) => (
+                  <li key={p} className="bg-ink-2 px-5 py-6">
+                    <span aria-hidden="true" className="mb-4 block h-px w-8 bg-signal" />
+                    <span className="font-serif text-[1.375rem] leading-tight">{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 max-w-[46rem] text-bone/75" data-reveal style={{ "--d": 3 } as React.CSSProperties}>
+                These are central to everything we do, from school workshops to fatherhood circles to the partnerships
+                we build with agencies across New York City.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Who we serve */}
       <section className="on-bone bg-bone text-ink">
@@ -108,7 +139,7 @@ export default function HomePage() {
                   href={`/programs#${p.id}`}
                   className="group grid gap-4 py-10 transition-colors md:grid-cols-12 md:gap-8 md:py-12"
                 >
-                  <span className="display text-[4.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_#FFCB37] md:col-span-2 md:text-[7rem]">
+                  <span className="display text-[4.5rem] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_#C9A45C] md:col-span-2 md:text-[7rem]">
                     {p.number}
                   </span>
                   <span className="md:col-span-5">

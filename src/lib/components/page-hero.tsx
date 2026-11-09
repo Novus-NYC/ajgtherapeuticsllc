@@ -12,7 +12,7 @@ export default function PageHero({ eyebrow, title, intro, aside }: Props) {
     <section className="relative overflow-hidden bg-ink">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 left-[8%] h-[38rem] w-[34rem] max-w-[90vw] bg-[radial-gradient(ellipse_at_top,rgba(255,203,55,0.16),transparent_68%)]"
+        className="pointer-events-none absolute -top-24 left-[8%] h-[38rem] w-[34rem] max-w-[90vw] bg-[radial-gradient(ellipse_at_top,rgba(201,164,92,0.16),transparent_68%)]"
       />
       <div className="container-page relative grid gap-10 pb-16 pt-36 md:grid-cols-12 md:pb-20 md:pt-44">
         <div className={aside ? "md:col-span-7" : "md:col-span-10"}>

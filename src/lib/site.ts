@@ -177,6 +177,13 @@ export const vision = {
   ],
 } as const
 
+// From Alam Gonzalez's feedback (Oct 24, 2026): why the work matters.
+export const purpose = {
+  lead: "AJG Therapeutics is more than a business offering workshops.",
+  body: "Our vision is to create opportunities for men and young people, particularly men of color and individuals from underserved communities, to develop leadership skills, strengthen their relationships, embrace accountability, and overcome the barriers that may limit their potential.",
+  pillars: ["Fatherhood", "Mentorship", "Violence prevention", "Emotional wellness", "Community empowerment"],
+} as const
+
 export const approach =
   "AJG Therapeutics LLC operates through culturally grounded, trauma-informed practices delivered by trained facilitators with lived experience. We provide school- and community-based programming aligned with Social-Emotional Learning (SEL), restorative practices, and youth development frameworks to support positive school culture and community safety."
 

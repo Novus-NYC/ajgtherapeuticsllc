@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    background: #0f0e0c;
+    background: #083224;
     color: #f3efe9;
     scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
@@ -19,15 +19,15 @@
     box-sizing: border-box;
   }
   ::selection {
-    background: #ffcb37;
-    color: #0f0e0c;
+    background: #C9A45C;
+    color: #083224;
   }
   :focus-visible {
-    outline: 2px solid #ffcb37;
+    outline: 2px solid #C9A45C;
     outline-offset: 3px;
   }
   .on-bone :focus-visible {
-    outline-color: #0f0e0c;
+    outline-color: #083224;
   }
 }
 
@@ -102,12 +102,12 @@ html.js [data-shown] .cycle-tick {
    is its own panel with a static glow that warms through the story. */
 .film-panel,
 .film-glow {
-  background: radial-gradient(55% 60% at 72% 45%, var(--glow, rgba(255, 203, 55, 0.12)), transparent 70%), #0f0e0c;
+  background: radial-gradient(55% 60% at 72% 45%, var(--glow, rgba(201,164,92, 0.12)), transparent 70%), #083224;
 }
 @media (max-aspect-ratio: 1/1) {
   .film-panel,
   .film-glow {
-    background: radial-gradient(80% 45% at 50% 28%, var(--glow, rgba(255, 203, 55, 0.12)), transparent 70%), #0f0e0c;
+    background: radial-gradient(80% 45% at 50% 28%, var(--glow, rgba(201,164,92, 0.12)), transparent 70%), #083224;
   }
 }
 .film-stage {
@@ -132,7 +132,7 @@ html.js [data-shown] .cycle-tick {
   right: -0.04em;
   top: 52%;
   height: 0.07em;
-  background: #ffcb37;
+  background: #C9A45C;
   transform-origin: left;
   transform: scaleX(1);
 }
